@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import Link from "next/link";
 import path from "path";
 
 export default function Product(props: any) {
@@ -7,12 +8,13 @@ export default function Product(props: any) {
     <div>
       <ul>
         {products.map((product: any) => {
-          return <li>{product.title}</li>;
+          return <li key={product.id}><Link href={`/prerendering/${product.id}`}>{product.title}</Link></li>
         })}
       </ul>
     </div>
   );
 }
+
 
 export async function getStaticProps() {
   console.log("Re-Generating")
