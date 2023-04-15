@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import EventList from "../../../components/events/event-list";
 import EventSearch from "../../../components/events/event-search";
 import { getAllEvents } from "../../../utils/utils";
+import Head from "next/head";
 
 export default function AllEventsPage(props: any) {
     const events = props.events;
@@ -14,6 +15,9 @@ export default function AllEventsPage(props: any) {
     }
     return(
         <Fragment>
+            <Head>
+                <title>All Events</title>
+            </Head>
             <EventSearch onSearch={findEventsHandler}/>
             <EventList items = {events}/>
         </Fragment>

@@ -6,6 +6,7 @@ import Button from "../../../components/ui/button";
 import ErrorAlert from "../../../components/ui/error-alert";
 import { getFilteredEvents } from "../../../dummy-data";
 import  useSWR  from "swr";
+import Head from "next/head";
 
 export default function FilteredEventsPage() {
     const router = useRouter();
@@ -38,6 +39,12 @@ export default function FilteredEventsPage() {
     const numYear = +filteredYear;
     const numMonth = +filteredMonth;
 
+    const filteredEvent = (
+        <Head>
+            <title>Filtered Events</title>
+        </Head>
+    )
+
     if (
         isNaN(numYear) ||
         isNaN(numMonth) ||
@@ -47,6 +54,7 @@ export default function FilteredEventsPage() {
         numMonth > 12 || error
     ) {
         return <Fragment>
+            {filteredEvent}
             <ErrorAlert><p>Invalid filter, Please adjust your values.</p></ErrorAlert>
             <div className="center">
                 <Button link="/events">Show All Events</Button>
@@ -60,6 +68,7 @@ export default function FilteredEventsPage() {
 
     if (!filteredEvents || filteredEvents.length === 0) {
         return <Fragment>
+            {filteredEvent}
             <ErrorAlert><p>No events found for the chose filter!</p></ErrorAlert>
             <div className="center">
                 <Button link="/events">Show All Events</Button>
@@ -69,6 +78,7 @@ export default function FilteredEventsPage() {
     const date = new Date(numYear, numMonth - 1);
     return(
         <Fragment>
+            {filteredEvent}
             <ResultsTitle date={date}/>
             <EventList items= {filteredEvents}/>
         </Fragment>

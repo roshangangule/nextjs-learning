@@ -1,3 +1,4 @@
+import Image from "next/image";
 import classes from "../events/event-item.module.css";
 import AddressIcon from "../icons/address-icon";
 import ArrowRightIcon from "../icons/arrow-right-icon";
@@ -16,7 +17,8 @@ export default function EventItem(props: any) {
   const exploreLink = `/events/${id}`;
   return (
     <li className={classes.item}>
-      <img src={'/' + image} alt={title} />
+      <Image src={'/' + image} alt={title} width= {240} height={160}/>
+      {/* <img src={'/' + image} alt={title} /> */}
       <div className={classes.content}>
         <div className={classes.summary}>
           <h2>{title}</h2>
