@@ -7,6 +7,7 @@ import ErrorAlert from "../../../components/ui/error-alert";
 import { getAllEvents, getEventById, getFeaturedEvents } from "../../../utils/utils";
 import { eventNames } from "process";
 import Head from "next/head";
+import Comment from "../../../components/input/comments";
 
 export default function EventDetailsPage(props: any) {
     const event  = props.selectedEvent;
@@ -31,6 +32,7 @@ export default function EventDetailsPage(props: any) {
             <EventContent>
                 <p>{event.description}</p>
             </EventContent>
+            <Comment eventId={event.id}/>
         </Fragment>
     );
 }

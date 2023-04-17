@@ -1,6 +1,7 @@
 import EventList from "../../components/events/event-list";
 import { getFeaturedEvents } from "../../../nextjs-learning/utils/utils";
 import Head from "next/head";
+import NewsletterRegistration from "../../components/input/newsletter-registration";
 
 export default function Home(props: any) {
   const { events } = props; 
@@ -10,6 +11,7 @@ export default function Home(props: any) {
       <Head>
         <title>NextJS Events</title>
       </Head>
+      <NewsletterRegistration />
       <EventList items = {events}/>
       {/* <ul>
         <li>
